@@ -1,5 +1,5 @@
-import propTypes from 'prop-types';
-import styles from './ConstactList.module.css';
+import propTypes from "prop-types";
+import styles from "./ConstactList.module.css";
 
 export const ContactList = ({ contacts, onDeleteContact }) => {
   return (
@@ -28,5 +28,5 @@ ContactList.propTypes = {
       number: propTypes.string.isRequired,
     })
   ).isRequired,
-  deleteContact: propTypes.func.isRequired,
+  onDeleteContact: propTypes.func.isRequired,
 };
