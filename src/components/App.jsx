@@ -19,10 +19,10 @@ export class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    const isContactInPhonebook = this.state.contacts.find(
+    const isContactExist = this.state.contacts.find(
       (contact) => contact.name.toLocaleLowerCase() === name.toLowerCase()
     );
-    if (isContactInPhonebook) {
+    if (isContactExist) {
       return Notiflix.Notify.failure("The number is already in the phonebook");
     }
     const id = nanoid();
@@ -43,7 +43,7 @@ export class App extends Component {
 
   getFilteredContacts = () => {
     const { contacts, filter } = this.state;
-    if (filter === "") {
+    if (!filter) {
       return contacts;
     }
     return contacts.filter((contact) =>
