@@ -1,30 +1,30 @@
-import propTypes from 'prop-types';
-import React, { Component } from 'react';
-import styles from './ContactForm.module.css';
+import propTypes from "prop-types";
+import React, { Component } from "react";
+import styles from "./ContactForm.module.css";
 
 export class ContactForm extends Component {
   state = {
-    name: '',
-    number: '',
+    name: "",
+    number: "",
   };
-  handleNameChange = e => {
+  handleNameChange = (e) => {
     this.setState({
       name: e.target.value,
     });
   };
-  handleNumberChange = e => {
+  handleNumberChange = (e) => {
     this.setState({
       number: e.target.value,
     });
   };
-  handleFormSubmit = e => {
+  handleFormSubmit = (e) => {
     e.preventDefault();
     this.props.onSubmit({ ...this.state });
     this.resetForm();
   };
 
   resetForm = () => {
-    this.setState(() => ({ name: '', number: '' }));
+    this.setState(() => ({ name: "", number: "" }));
   };
 
   render() {
@@ -53,7 +53,7 @@ export class ContactForm extends Component {
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            title="Phone number must be at least 5 digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
         </div>

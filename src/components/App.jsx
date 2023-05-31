@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 import { ContactForm } from "./ContactForm/ContactForm";
 import { ContactList } from "./ContactList/ContactList";
 import { Filter } from "./Filter/Filter";
+import "./App.css";
 
 export class App extends Component {
   state = {
@@ -64,12 +65,16 @@ export class App extends Component {
   }
 
   render() {
-    const { filter } = this.state;
+    const { filter, contacts } = this.state;
     return (
       <div className="container">
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
-        <Filter value={filter} onChangeFilter={this.filterContacts} />
+        {!contacts.length ? (
+          <div className="noContacts">NO CONTACTS IN BOOK</div>
+        ) : (
+          <Filter value={filter} onChangeFilter={this.filterContacts} />
+        )}
         <h2>Contacts</h2>
         <ContactList
           contacts={this.getFilteredContacts()}
